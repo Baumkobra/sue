@@ -1,4 +1,4 @@
-from multiprocessing.dummy import Process
+from multiprocessing import Process
 from threading import Thread
 from pygame import *
 import pygame as pg
@@ -11,12 +11,13 @@ from socket import *
 from headers import *
 from messages import *
 from queue import Queue
-
-dir = "multiplayers\\"
+from settingsfile import *
+from typing import Literal, Union
+dir = "data/"
 FPS = 60
 WIDTH = 1200
 HEIGHT = 1000
-HOST, PORT = "127.0.0.1", 50000
+
 def d(debug):
     print(debug)
 
@@ -64,34 +65,43 @@ class ObjectGroup:
 class ServerClient:
     def __init__(self) -> None:
         """connecting to the server"""
-        self.connection : socket= socket(AF_INET,SOCK_STREAM)
-        d(f"attempting to connect to: {HOST}, {PORT}")
-        self.connection.connect((HOST,PORT))
-        d(f"established connection : {HOST}, {PORT}")
-        self.connection.setblocking(True)
+        try:
+            self.connection : socket= socket(AF_INET,SOCK_STREAM)
+            d(f"attempting to connect to: {HOST}, {PORT}")
+            self.connection.connect((HOST,PORT))
+            d(f"established connection : {HOST}, {PORT}")
+            self.connection.setblocking(True)
 
-        self.receive_process = Process(target=self.receive, args=())
-        d(f"starting receive_process")
-        self.receive_process.start()
+            self.receive_process = Process(target=self.receive, args=())
+            d(f"starting receive_process")
+            self.receive_process.start()    
+        except Exception as ex:
+            d(f"Exception on ServerClient__init__(): {ex}")
+            d(f"exiting programm")
+            exit()
 
 
     def receive(self):
         while True:
 
-            data1, data2 = self.get_message()
+            data = self.get_message()
+            if data is False:
+                continue
+            data1, data2 = data
             d(f"putting data in the queue: key:{data1} value:{data2}")
             queue.put({data1:data2})
             d(f"put data in the queue")
     
 
-    def get_message(self) -> tuple[str,str]:
+    def get_message(self) -> Union[tuple[str,str], Literal[False]]:
         """receiving messages from the server"""
 
         d("awaiting new messages")
 
         header_data = self.connection.recv(HEADERSIZE)
         d(f"header received: {header_data}")
-
+        if header_data == b"":
+            return False
         header = decode_header(header_data)
         d(f"header decoded: {header}")
 
@@ -126,8 +136,9 @@ class ServerClient:
 
 def mainloop():
     clock = pg.time.Clock()
+    keydown = {"w":False, "a":False, "d": False, "s":False}
     while True:
-
+        WIN.fill("black")
         clock.tick(FPS)
         
         players.draw()
@@ -135,22 +146,40 @@ def mainloop():
 
         for event in pg.event.get():
             
+            if event.type == pg.KEYDOWN:
+                print(event.unicode)
+                try:
+                    keydown[event.unicode] = True
+                except:
+                    pass
 
+            elif event.type == pg.KEYUP:
+                try:
+                    keydown[event.unicode] = False
+                except:
+                    pass
 
-            if event.type == pg.QUIT:
+            elif event.type == pg.QUIT:
                 pg.quit()
                 exit()
-
-            elif event.type == pg.KEYDOWN:
-                print(event.unicode)
-
+        
+        for key, item in keydown.items():
+            if item is True:
+                if key == "w":
+                    player1.move(0,-10)
+                elif key == "s":
+                    player1.move(0,10)
+                elif key == "a":
+                    player1.move(-10,0)
+                elif key == "d":
+                    player1.move(10,0)
 
         pg.display.update()
 
 
 def main():
-
-    global WIN, group, players, bg, queue
+    global WIN, group, players, bg, queue, player1
+    client = ServerClient()
     queue = Queue(maxsize=2)
     pg.init()
     WIN = display.set_mode((WIDTH, HEIGHT))
