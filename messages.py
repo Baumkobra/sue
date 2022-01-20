@@ -1,9 +1,9 @@
 
 
 
-SEPERATOR = "<|sep|>"
-STARTER = "<|start|>"
-ENDER = "<|end|>"
+SEPERATOR = b"<|sep|>"
+STARTER = b"<|start|>"
+ENDER = b"<|end|>"
 
 
 

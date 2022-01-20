@@ -8,8 +8,9 @@ from multiprocessing import Process
 from uuid import uuid4
 from queue import Queue
 from threading import Thread
-import logging
+import time
 from time import sleep 
+
 run = True
 def d(txt):
     print(txt)
@@ -45,17 +46,21 @@ class ServerClient:
         self.addr = addr
         self.sock : socket = sock
         d(f"new ServerClient object: id = {self.id}: addr = {self.addr}")
-        self.get_message_process = Process(target=self.get_message, args=())
-        return
+        self.get_message_process = Thread(target=self.receive, args=())
+        self.get_message_process.start()
+      
         
     
     def receive(self):
         while True:
             data1, data2 = self.get_message()
-            d(f"putting data in the queue: key:{data1} value:{data2}")
-            queue.put({data1:data2})
+            d(f"putting data in the queue1: key:{data1} value:{data2}")
+   
             
-    
+
+    def get_item(self):
+        return self.items.pop(0)
+
 
     def get_message(self) -> tuple[str,str]:
         """receiving messages from a client"""
@@ -77,14 +82,35 @@ class ServerClient:
         return data1.decode(), data2.decode()
             
 
+    def send_message(self, data1, data2):
+        """sending a message to the server"""
+
+        d(f"formatting for sending: data1:{data1}, data2:{data2}")
+
+        formatted_data = format_message(data1=data1, data2=data2)
+        d(f"formatted data: {formatted_data}")
+
+        header = get_header(formatted_data)
+        d(f"header created: {header}")
+
+        self.connection.send(header)
+        self.connection.send(formatted_data)
+        d("sent data")
+
+
+
+
+
 
 def main():
-    global server, queue
+    global server, queue1, game
     server = Server()
-    serveracceptthread = Process(target=server.accept)
+    serveracceptthread = Thread(target=server.accept, args=())
     serveracceptthread.start()
-    queue = Queue(5)
+    queue1 = Queue(5)
 
+  
+   
     
 
 
