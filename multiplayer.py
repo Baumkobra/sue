@@ -101,16 +101,17 @@ class Player(GameObject):
 
     
 
+
 class ObjectGroup:
     def __init__(self, surface : Surface) -> None:
-        self.list: list[GameObject|Player] = []
+        self.list: list[Union[GameObject,Player]] = []
         self.surface = surface
 
     def add(self, gameobject : GameObject):
         self.list.append(gameobject)
 
     def draw(self):
-        for obj in self.list:
+        for obj in self.currently_on_screen():
             self.surface.blit(obj.img, (obj.xpos, obj.ypos))
 
     def get_list(self, id):
@@ -123,30 +124,48 @@ class ObjectGroup:
         for obj in self.list:
             obj.move(move_tuple)
 
+
+    def currently_on_screen(self) -> list:
+        """returns all GameObjects which need to be drawn"""
+        rtl = []
+        for obj in self.list:
+            c1 = (obj.x_right < 0)
+            c2 = (obj.xpos > WIDTH)
+            c3 = (obj.y_bottom < 0)
+            c4 = (obj.ypos > HEIGHT)
+            if c1 or c2 or c3 or c4:    
+                continue
+            rtl.append(obj)
+        return rtl
+            
+
    
 
     def __repr__(self) -> str:
         return self.list
 
-    def collision_precheck(self,gameobject: GameObject|Player, move_tuple: tuple):
+    def collision_precheck(self,gameobject: Union[GameObject,Player], move_tuple: tuple):
         """checks whether a GameObject or Player Object collides with a child of the ObjectGroup"""
         rtl = []
         x_move,y_move = move_tuple
+        x_move -=1
+        y_move -= 1
         for obj in self.list:
-            #
             
-            c1 = (obj.xpos < gameobject.xpos + x_move < obj.x_right)
-            c2 = (obj.xpos < gameobject.x_right + x_move < obj.x_right)
-            c3 = (obj.ypos < gameobject.ypos + y_move < obj.y_bottom)
-            c4 = (obj.ypos < gameobject.y_bottom + y_move < obj.y_bottom)
-            print(c1,c2,c3,c4)
+            c1 = (obj.xpos <= gameobject.xpos + x_move <= obj.x_right)
+            c2 = (obj.xpos <= gameobject.x_right + x_move <= obj.x_right)
+
+            c3 = (obj.ypos <= gameobject.ypos + y_move <= obj.y_bottom)
+            c4 = (obj.ypos <= gameobject.y_bottom + y_move <= obj.y_bottom)
+
+                
             if (c1 or c2) and (c3 or c4):
 
                 rtl.append(obj)
                
         if rtl == []:
             return False
-        
+        d(f"object {gameobject.id} collides with object {[rtobj.id.__str__() for rtobj in rtl]}")
         return rtl
             
                 
@@ -295,12 +314,14 @@ def main():
     bg + red
 
     player = ObjectGroup(WIN)
-    player1 = Player(dir+"player1.png", 100,100,500,200)
+    player1 = Player(dir+"player1.png", 100,86,500,200)
     player + player1
     
     obstacles = ObjectGroup(WIN)
     obst1 = GameObject(dir+"img1.png", 200,200,400,400)
+    obst2 = GameObject(dir+"blue.png", 100,200,600,600)
     obstacles + obst1
+    obstacles + obst2
     
     mainloop()
    
