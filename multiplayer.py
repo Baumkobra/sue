@@ -2,7 +2,6 @@
 
 from multiprocessing import Process
 from threading import Thread
-from turtle import update
 from pygame import *
 import pygame as pg
 from pygame.sprite import *
