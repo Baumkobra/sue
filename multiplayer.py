@@ -1,5 +1,4 @@
 
-
 from multiprocessing import Process
 from threading import Thread
 from pygame import *
@@ -20,6 +19,7 @@ dir = "data/"
 FPS = 60
 WIDTH = 1200
 HEIGHT = 1000
+MOVESPEED = 1
 
 def d(debug):
     """global debugging"""
@@ -79,18 +79,18 @@ class Player(GameObject):
         rt = []
         if self.xpos + x_move < WIDTH*0.2:
             ld(f"object out of focus: left")
-            x_contra = 10
+            x_contra = MOVESPEED
             x_move = 0 
         elif self.xpos + self.width +x_move > WIDTH*0.8: 
-            x_contra = -10
+            x_contra = -MOVESPEED
             x_move = 0
             ld(f"object out of focus: right")
         if self.ypos + y_move < HEIGHT*0.2:
-            y_contra = 10
+            y_contra = MOVESPEED
             y_move = 0
             ld(f"object out of focus: top")
         elif self.ypos + self.height+ y_move > HEIGHT*0.8:
-            y_contra = -10
+            y_contra = -MOVESPEED
             y_move = 0
             ld(f"object out of focus: bottom")
        
@@ -147,8 +147,7 @@ class ObjectGroup:
         """checks whether a GameObject or Player Object collides with a child of the ObjectGroup"""
         rtl = []
         x_move,y_move = move_tuple
-        x_move -=1
-        y_move -= 1
+     
         for obj in self.list:
             
             c1 = (obj.xpos <= gameobject.xpos + x_move <= obj.x_right)
@@ -159,8 +158,36 @@ class ObjectGroup:
 
                 
             if (c1 or c2) and (c3 or c4):
+                
 
-                rtl.append(obj)
+                rtx = 0
+                rty = 0
+                """
+                if c1 and c3:
+                    #top left
+                    print("top left")
+                if c1 and c4:
+                    #bottom left
+                    print("bottom left")
+                if c2 and c3:
+                    #top right
+                    print("top right")
+                if c2 and c4:
+                    print("bottom right")
+                """
+                if (c1 or c2) and c3 and not c4:  
+                    rty = obj.y_bottom
+                    print("top")
+                if (c1 or c2) and c4 and not c3:
+                    rty = obj.ypos
+                    print("bottom")
+                if c2 and (c3 or c4) and not c1:
+                    rtx = obj.xpos
+                    print("right")
+                if c1 and (c3 or c4) and not c2:
+                    rtx = obj.x_right
+                    print("left")
+                rtl.append((rtx,rty))
                
         if rtl == []:
             return False
@@ -250,7 +277,7 @@ class ServerClient:
 
 def mainloop():
     clock = pg.time.Clock()
-    keydown = {"w":[False,(0,-10)], "a":[False,(-10,0)], "d": [False,(10,0)], "s":[False, (0,10)]}
+    keydown = {"w":[False,(0,-MOVESPEED)], "a":[False,(-MOVESPEED,0)], "d": [False,(MOVESPEED,0)], "s":[False, (0,MOVESPEED)]}
     gl_pan = (0,0)
     while True:
         x_move = y_move = 0
