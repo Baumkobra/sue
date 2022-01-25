@@ -15,11 +15,12 @@ from queue import Queue
 from settingsfile import *
 from typing import Literal, Union
 import json
+from settingsfile import *
 dir = "data/"
 FPS = 60
 WIDTH = 1200
 HEIGHT = 1000
-MOVESPEED = 1
+
 
 def d(debug):
     """global debugging"""
@@ -150,11 +151,11 @@ class ObjectGroup:
      
         for obj in self.list:
             
-            c1 = (obj.xpos <= gameobject.xpos + x_move <= obj.x_right)
-            c2 = (obj.xpos <= gameobject.x_right + x_move <= obj.x_right)
+            c1 = (obj.xpos < gameobject.xpos + x_move <= obj.x_right)
+            c2 = (obj.xpos < gameobject.x_right + x_move <= obj.x_right)
 
-            c3 = (obj.ypos <= gameobject.ypos + y_move <= obj.y_bottom)
-            c4 = (obj.ypos <= gameobject.y_bottom + y_move <= obj.y_bottom)
+            c3 = (obj.ypos < gameobject.ypos + y_move <= obj.y_bottom)
+            c4 = (obj.ypos < gameobject.y_bottom + y_move <= obj.y_bottom)
 
                 
             if (c1 or c2) and (c3 or c4):
@@ -176,22 +177,22 @@ class ObjectGroup:
                     print("bottom right")
                 """
                 if (c1 or c2) and c3 and not c4:  
-                    rty = obj.y_bottom
+                    rty = obj.y_bottom - gameobject.ypos
                     print("top")
                 if (c1 or c2) and c4 and not c3:
-                    rty = obj.ypos
+                    rty = obj.ypos - gameobject.y_bottom
                     print("bottom")
                 if c2 and (c3 or c4) and not c1:
-                    rtx = obj.xpos
+                    rtx = obj.xpos - gameobject.x_right
                     print("right")
                 if c1 and (c3 or c4) and not c2:
-                    rtx = obj.x_right
+                    rtx = obj.x_right - gameobject.xpos
                     print("left")
                 rtl.append((rtx,rty))
                
         if rtl == []:
             return False
-        d(f"object {gameobject.id} collides with object {[rtobj.id.__str__() for rtobj in rtl]}")
+        d(f"object {gameobject.id} collides with object {rtl}")
         return rtl
             
                 
@@ -316,10 +317,13 @@ def mainloop():
         collision = obstacles.collision_precheck(player1, (x_move,y_move))
   
         if collision is False:
-       
+        
             player1.move(focus[0])
             bg.move(focus[1])
             obstacles.move(focus[1])
+        else:
+            for coltup in collision:
+                player1.move(coltup)
 
         pg.display.update()
         
