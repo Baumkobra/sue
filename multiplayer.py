@@ -50,6 +50,7 @@ class GameObject:
         self.bottom_right = (self.x_right, self.y_bottom)
         self.bottom_left = (self.xpos, self.y_bottom)
 
+
         
     def move(self,move_tuple: tuple):
         """move_tuple = (x_move,y_move)"""
@@ -71,10 +72,11 @@ class GameObject:
 class Player(GameObject):
     
     def in_heigh_focus(self,move_tuple:tuple):
-        debug = False
+        LOCALDEBUG = False
         def ld(txt):
-            if debug:
-                print(False)
+            if LOCALDEBUG:
+                print(txt)
+            
         x_move, y_move = move_tuple
         x_contra = y_contra = 0
         rt = []
@@ -117,6 +119,9 @@ class ObjectGroup:
     def get_list(self, id):
         return self.list
 
+    def __sub__(self, gameobject:GameObject):
+        self.list.remove(gameobject)
+
     def __add__(self, gameobject : GameObject):
         self.list.append(gameobject)
 
@@ -129,11 +134,11 @@ class ObjectGroup:
         """returns all GameObjects which need to be drawn"""
         rtl = []
         for obj in self.list:
-            c1 = (obj.x_right < 0)
-            c2 = (obj.xpos > WIDTH)
-            c3 = (obj.y_bottom < 0)
-            c4 = (obj.ypos > HEIGHT)
-            if c1 or c2 or c3 or c4:    
+            x1 = (obj.x_right < 0)
+            x2 = (obj.xpos > WIDTH)
+            y3 = (obj.y_bottom < 0)
+            y4 = (obj.ypos > HEIGHT)
+            if x1 or x2 or y3 or y4:    
                 continue
             rtl.append(obj)
         return rtl
@@ -145,57 +150,51 @@ class ObjectGroup:
         return self.list
 
     def collision_precheck(self,gameobject: Union[GameObject,Player], move_tuple: tuple):
-        """checks whether a GameObject or Player Object collides with a child of the ObjectGroup"""
-        rtl = []
+        """checks whether a GameObject or Player Object collides with a child of the ObjectGroup\n
+        return a tuple with the maximum allowed values """
+
+        
         x_move,y_move = move_tuple
-     
+        rtvalx, rtvaly = move_tuple
+        LOCALDEBUG = False
+        def ld(txt):
+            """method intern debugging"""
+            if LOCALDEBUG: 
+                print(txt)
         for obj in self.list:
-            
-            c1 = (obj.xpos < gameobject.xpos + x_move <= obj.x_right)
-            c2 = (obj.xpos < gameobject.x_right + x_move <= obj.x_right)
+            x1 = (obj.xpos < gameobject.xpos + x_move < obj.x_right)
+            x2 = (obj.xpos < gameobject.x_right + x_move < obj.x_right)
 
-            c3 = (obj.ypos < gameobject.ypos + y_move <= obj.y_bottom)
-            c4 = (obj.ypos < gameobject.y_bottom + y_move <= obj.y_bottom)
-
+            y3 = (obj.ypos < gameobject.ypos + y_move < obj.y_bottom)
+            y4 = (obj.ypos < gameobject.y_bottom + y_move < obj.y_bottom)
+         
+            if y_move != 0:
+                if (x1 or x2) and y3 and (not y4):  
+                    rtvaly = obj.y_bottom- gameobject.ypos                   
+                    d("top")
+                elif (x1 or x2) and y4 and (not y3):
+                    rtvaly = obj.ypos - gameobject.y_bottom                  
+                    d("bottom")
                 
-            if (c1 or c2) and (c3 or c4):
-                
-
-                rtx = 0
-                rty = 0
-                """
-                if c1 and c3:
-                    #top left
-                    print("top left")
-                if c1 and c4:
-                    #bottom left
-                    print("bottom left")
-                if c2 and c3:
-                    #top right
-                    print("top right")
-                if c2 and c4:
-                    print("bottom right")
-                """
-                if (c1 or c2) and c3 and not c4:  
-                    rty = obj.y_bottom - gameobject.ypos
-                    print("top")
-                if (c1 or c2) and c4 and not c3:
-                    rty = obj.ypos - gameobject.y_bottom
-                    print("bottom")
-                if c2 and (c3 or c4) and not c1:
-                    rtx = obj.xpos - gameobject.x_right
-                    print("right")
-                if c1 and (c3 or c4) and not c2:
-                    rtx = obj.x_right - gameobject.xpos
-                    print("left")
-                rtl.append((rtx,rty))
+                if abs(rtvaly) > MOVESPEED:
+                    rtvaly = y_move
+                y_move = rtvaly
+            if x_move != 0:
+                if x2 and (y3 or y4) and (not x1):     
+                    rtvalx = obj.xpos- gameobject.x_right 
+                            
+                    d("right")
+                elif x1 and (y3 or y4) and (not x2):
+                    rtvalx = obj.x_right - gameobject.xpos
+                    d("left")
                
-        if rtl == []:
-            return False
-        d(f"object {gameobject.id} collides with object {rtl}")
-        return rtl
-            
+                if abs(rtvalx) > MOVESPEED:
+                    rtvalx = x_move
+                x_move = rtvalx
                 
+        return (x_move,y_move)
+            
+
 
 
 class ServerClient:
@@ -311,19 +310,13 @@ def mainloop():
             if item[0] is True:
                 x,y = item[1]
                 x_move += x
-                y_move += y
-           
-        focus = player1.in_heigh_focus((x_move,y_move))
-        collision = obstacles.collision_precheck(player1, (x_move,y_move))
-  
-        if collision is False:
-        
-            player1.move(focus[0])
-            bg.move(focus[1])
-            obstacles.move(focus[1])
-        else:
-            for coltup in collision:
-                player1.move(coltup)
+                y_move += y     
+        collision = obstacles.collision_precheck(player1, (x_move,y_move))  
+        focus = player1.in_heigh_focus((collision))
+        player1.move(focus[0])
+        bg.move(focus[1])
+        obstacles.move(focus[1])
+      
 
         pg.display.update()
         
@@ -349,9 +342,10 @@ def main():
     
     obstacles = ObjectGroup(WIN)
     obst1 = GameObject(dir+"img1.png", 200,200,400,400)
-    obst2 = GameObject(dir+"blue.png", 100,200,600,600)
+    obst2 = GameObject(dir+"blue.png", 100,200,500,600)
     obstacles + obst1
     obstacles + obst2
+ 
     
     mainloop()
    
