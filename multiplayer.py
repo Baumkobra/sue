@@ -50,7 +50,8 @@ class GameObject:
         self.bottom_right = (self.x_right, self.y_bottom)
         self.bottom_left = (self.xpos, self.y_bottom)
 
-
+    def flip(self,horizontal: bool, vertical):
+        self.img = transform.flip(self.img, horizontal, vertical)
         
     def move(self,move_tuple: tuple):
         """move_tuple = (x_move,y_move)"""
@@ -151,8 +152,7 @@ class ObjectGroup:
 
     def collision_precheck(self,gameobject: Union[GameObject,Player], move_tuple: tuple):
         """checks whether a GameObject or Player Object collides with a child of the ObjectGroup\n
-        return a tuple with the maximum allowed values """
-
+        return a tuple with the maximum allowed move values """
         
         x_move,y_move = move_tuple
         rtvalx, rtvaly = move_tuple
@@ -171,22 +171,21 @@ class ObjectGroup:
             if y_move != 0:
                 if (x1 or x2) and y3 and (not y4):  
                     rtvaly = obj.y_bottom- gameobject.ypos                   
-                    d("top")
+                    ld("top")
                 elif (x1 or x2) and y4 and (not y3):
                     rtvaly = obj.ypos - gameobject.y_bottom                  
-                    d("bottom")
+                    ld("bottom")
                 
                 if abs(rtvaly) > MOVESPEED:
                     rtvaly = y_move
                 y_move = rtvaly
             if x_move != 0:
                 if x2 and (y3 or y4) and (not x1):     
-                    rtvalx = obj.xpos- gameobject.x_right 
-                            
-                    d("right")
+                    rtvalx = obj.xpos- gameobject.x_right         
+                    ld("right")
                 elif x1 and (y3 or y4) and (not x2):
                     rtvalx = obj.x_right - gameobject.xpos
-                    d("left")
+                    ld("left")
                
                 if abs(rtvalx) > MOVESPEED:
                     rtvalx = x_move
@@ -194,7 +193,6 @@ class ObjectGroup:
                 
         return (x_move,y_move)
             
-
 
 
 class ServerClient:
@@ -278,14 +276,10 @@ class ServerClient:
 def mainloop():
     clock = pg.time.Clock()
     keydown = {"w":[False,(0,-MOVESPEED)], "a":[False,(-MOVESPEED,0)], "d": [False,(MOVESPEED,0)], "s":[False, (0,MOVESPEED)]}
-    gl_pan = (0,0)
+
     while True:
-        x_move = y_move = 0
         clock.tick(FPS)
-        WIN.fill("black")
-        bg.draw()
-        obstacles.draw()
-        player.draw()
+        x_move = y_move = 0
         
         for event in pg.event.get():
             
@@ -316,7 +310,12 @@ def mainloop():
         player1.move(focus[0])
         bg.move(focus[1])
         obstacles.move(focus[1])
-      
+
+
+        WIN.fill("black")
+        bg.draw()
+        obstacles.draw()
+        player.draw()
 
         pg.display.update()
         
