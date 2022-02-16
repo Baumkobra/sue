@@ -1,0 +1,108 @@
+{
+     "Layer": "TOP",
+     "ObjectGroup": {
+          "active": false,
+          "Elements": [
+               {
+                    "type": "default",
+                    "img": "data/black 95.png",
+                    "alive": true,
+                    "width": 800,
+                    "height": 600,
+                    "xpos": 0,
+                    "ypos": 0,
+                    "interactive": false
+               },
+               {
+                    "type": "textbox",
+                    "text": "Menu",
+                    "color": [
+                         255,
+                         255,
+                         255
+                    ],
+                    "fontsize": 60,
+                    "fontstyle": "Calibri",
+                    "width": 100,
+                    "height": 100,
+                    "xpos": 550,
+                    "ypos": 20
+               },
+               {
+                    "type": "textbox",
+                    "text": "W <==> UP",
+                    "color": [
+                         0,
+                         255,
+                         0
+                    ],
+                    "fontsize": 40,
+                    "fontstyle": "Calibri",
+                    "width": 100,
+                    "height": 100,
+                    "xpos": 200,
+                    "ypos": 100
+               },
+               {
+                    "type": "textbox",
+                    "text": "S <==> DOWN",
+                    "color": [
+                         0,
+                         255,
+                         0
+                    ],
+                    "fontsize": 40,
+                    "fontstyle": "Calibri",
+                    "width": 100,
+                    "height": 100,
+                    "xpos": 200,
+                    "ypos": 200
+               },
+               {
+                    "type": "textbox",
+                    "text": "A <==> LEFT",
+                    "color": [
+                         0,
+                         255,
+                         0
+                    ],
+                    "fontsize": 40,
+                    "fontstyle": "Calibri",
+                    "width": 100,
+                    "height": 100,
+                    "xpos": 200,
+                    "ypos": 300
+               },
+               {
+                    "type": "textbox",
+                    "text": "D <==> RIGHT",
+                    "color": [
+                         0,
+                         255,
+                         0
+                    ],
+                    "fontsize": 40,
+                    "fontstyle": "Calibri",
+                    "width": 100,
+                    "height": 100,
+                    "xpos": 200,
+                    "ypos": 400
+               },
+               {
+                    "type": "textbox",
+                    "text": "E <==> INTERACT",
+                    "color": [
+                         0,
+                         255,
+                         0
+                    ],
+                    "fontsize": 40,
+                    "fontstyle": "Calibri",
+                    "width": 100,
+                    "height": 100,
+                    "xpos": 200,
+                    "ypos": 500
+               }
+          ]
+     }
+}

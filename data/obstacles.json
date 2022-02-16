@@ -1,0 +1,1916 @@
+{
+    "Layer": "MIDDLE",
+    "ObjectGroup": {
+        "active": true,
+        "Elements": [
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -5000,
+                "ypos": -1250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -5000,
+                "ypos": -250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -5000,
+                "ypos": 1000,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -5000,
+                "ypos": 1250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4750,
+                "ypos": -2250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4750,
+                "ypos": 2250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4500,
+                "ypos": -4250,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4500,
+                "ypos": -3750,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4500,
+                "ypos": -2500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4500,
+                "ypos": -1500,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4500,
+                "ypos": -250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4500,
+                "ypos": 1500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4500,
+                "ypos": 2000,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4500,
+                "ypos": 2500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4500,
+                "ypos": 4500,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4250,
+                "ypos": -2000,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4250,
+                "ypos": -500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4000,
+                "ypos": 0,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4000,
+                "ypos": 500,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4000,
+                "ypos": 1750,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -4000,
+                "ypos": 2500,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3750,
+                "ypos": -3500,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3750,
+                "ypos": -500,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3750,
+                "ypos": 1000,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3500,
+                "ypos": -1750,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3500,
+                "ypos": -250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3500,
+                "ypos": 1250,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3500,
+                "ypos": 2750,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3500,
+                "ypos": 4000,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3250,
+                "ypos": 0,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3250,
+                "ypos": 1500,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3250,
+                "ypos": 1750,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3250,
+                "ypos": 3250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3250,
+                "ypos": 4500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3000,
+                "ypos": -4750,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3000,
+                "ypos": -750,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3000,
+                "ypos": -500,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3000,
+                "ypos": 2000,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3000,
+                "ypos": 3250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -3000,
+                "ypos": 3500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2750,
+                "ypos": -4000,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2750,
+                "ypos": 3000,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2750,
+                "ypos": 3250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2750,
+                "ypos": 3750,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2750,
+                "ypos": 4250,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2500,
+                "ypos": -5000,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2500,
+                "ypos": 0,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2500,
+                "ypos": 250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2500,
+                "ypos": 750,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2500,
+                "ypos": 2750,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2500,
+                "ypos": 3500,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2250,
+                "ypos": -3500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2250,
+                "ypos": -1250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2250,
+                "ypos": 250,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2250,
+                "ypos": 2500,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2000,
+                "ypos": -3750,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2000,
+                "ypos": -2250,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2000,
+                "ypos": -1250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2000,
+                "ypos": 1000,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -2000,
+                "ypos": 3000,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1750,
+                "ypos": -3500,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1750,
+                "ypos": -3250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1750,
+                "ypos": -3000,
+                "interactive": false
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1750,
+                "ypos": -2500,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1750,
+                "ypos": -2250,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1500,
+                "ypos": -5000,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1500,
+                "ypos": -4500,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1500,
+                "ypos": -4250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1500,
+                "ypos": 1500,
+                "interactive": false
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1500,
+                "ypos": 3500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1500,
+                "ypos": 4500,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1250,
+                "ypos": -5000,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1250,
+                "ypos": -4000,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1250,
+                "ypos": -2500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1250,
+                "ypos": -1750,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1250,
+                "ypos": -1000,
+                "interactive": false
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1250,
+                "ypos": 250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1250,
+                "ypos": 2750,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1250,
+                "ypos": 4250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1250,
+                "ypos": 4500,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1000,
+                "ypos": -4750,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1000,
+                "ypos": -3500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1000,
+                "ypos": -2250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -1000,
+                "ypos": 4250,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -750,
+                "ypos": 1000,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -750,
+                "ypos": 2250,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -750,
+                "ypos": 3000,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -500,
+                "ypos": -3750,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -500,
+                "ypos": -3500,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -500,
+                "ypos": 0,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -250,
+                "ypos": -5000,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -250,
+                "ypos": -3250,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -250,
+                "ypos": 0,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": -250,
+                "ypos": 1250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 0,
+                "ypos": -1500,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 0,
+                "ypos": -750,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 250,
+                "ypos": -5000,
+                "interactive": false
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 250,
+                "ypos": -2500,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 250,
+                "ypos": -1750,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 250,
+                "ypos": -1500,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 250,
+                "ypos": 3000,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 500,
+                "ypos": -4000,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 500,
+                "ypos": -3500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 500,
+                "ypos": -1250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 500,
+                "ypos": -1000,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 500,
+                "ypos": 0,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 500,
+                "ypos": 1750,
+                "interactive": false
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 500,
+                "ypos": 4750,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 750,
+                "ypos": -4000,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 750,
+                "ypos": -3500,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 750,
+                "ypos": -500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 750,
+                "ypos": 1500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 750,
+                "ypos": 2250,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": -4750,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": -4500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": -3750,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": -3500,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": -2750,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": -1000,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": -250,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": 0,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": 750,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": 2250,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": 3250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": 4500,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1000,
+                "ypos": 4750,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1250,
+                "ypos": -3750,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1250,
+                "ypos": 1000,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1250,
+                "ypos": 3500,
+                "interactive": false
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1500,
+                "ypos": -5000,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1500,
+                "ypos": -1000,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1500,
+                "ypos": -750,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1500,
+                "ypos": 1500,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1500,
+                "ypos": 2250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1750,
+                "ypos": -4250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1750,
+                "ypos": -3750,
+                "interactive": false
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1750,
+                "ypos": 0,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1750,
+                "ypos": 1000,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 1750,
+                "ypos": 2750,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2000,
+                "ypos": -5000,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2000,
+                "ypos": -2750,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2000,
+                "ypos": -2250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2000,
+                "ypos": -1250,
+                "interactive": false
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2000,
+                "ypos": 1500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2000,
+                "ypos": 3250,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2000,
+                "ypos": 4000,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2250,
+                "ypos": -500,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2250,
+                "ypos": 1000,
+                "interactive": false
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2250,
+                "ypos": 1750,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2250,
+                "ypos": 2000,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2250,
+                "ypos": 2500,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2500,
+                "ypos": -5000,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2500,
+                "ypos": -4750,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2500,
+                "ypos": -4250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2500,
+                "ypos": -3250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2500,
+                "ypos": 0,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2500,
+                "ypos": 4000,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2500,
+                "ypos": 4500,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2750,
+                "ypos": -2000,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2750,
+                "ypos": -1750,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2750,
+                "ypos": -750,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2750,
+                "ypos": 1500,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2750,
+                "ypos": 2000,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 2750,
+                "ypos": 4250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3000,
+                "ypos": -4500,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3000,
+                "ypos": -3500,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3000,
+                "ypos": -3250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3000,
+                "ypos": -2000,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3000,
+                "ypos": -1750,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3000,
+                "ypos": -1000,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3000,
+                "ypos": 1500,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3000,
+                "ypos": 2250,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3250,
+                "ypos": -4250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3250,
+                "ypos": -1250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3250,
+                "ypos": -1000,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3250,
+                "ypos": -750,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3250,
+                "ypos": -500,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3250,
+                "ypos": 500,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3250,
+                "ypos": 4250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3500,
+                "ypos": -4000,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3500,
+                "ypos": -3250,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3500,
+                "ypos": -2750,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3500,
+                "ypos": -2250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3500,
+                "ypos": 750,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3500,
+                "ypos": 2000,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3500,
+                "ypos": 2500,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3500,
+                "ypos": 3750,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3750,
+                "ypos": -4250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3750,
+                "ypos": -2250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3750,
+                "ypos": -1500,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 3750,
+                "ypos": 4750,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4000,
+                "ypos": -3750,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4000,
+                "ypos": 1000,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4000,
+                "ypos": 1250,
+                "interactive": false
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4000,
+                "ypos": 2000,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4000,
+                "ypos": 4250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4250,
+                "ypos": 0,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4250,
+                "ypos": 750,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4250,
+                "ypos": 3250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4250,
+                "ypos": 4000,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4500,
+                "ypos": -4500,
+                "interactive": false
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4500,
+                "ypos": -4250,
+                "interactive": false
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4500,
+                "ypos": -2250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4500,
+                "ypos": -1500,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4500,
+                "ypos": -1250,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4500,
+                "ypos": 2500,
+                "interactive": true
+            },
+            {
+                "type": "goldore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4750,
+                "ypos": -3000,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4750,
+                "ypos": 250,
+                "interactive": true
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4750,
+                "ypos": 3250,
+                "interactive": true
+            },
+            {
+                "type": "default",
+                "img": "data//blue.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4750,
+                "ypos": 3500,
+                "interactive": false
+            },
+            {
+                "type": "killable",
+                "img": "data//red.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4750,
+                "ypos": 3750,
+                "interactive": true
+            },
+            {
+                "type": "silberore",
+                "img": "data//green.png",
+                "width": 250,
+                "height": 250,
+                "xpos": 4750,
+                "ypos": 4000,
+                "interactive": true
+            }
+        ]
+    }
+}

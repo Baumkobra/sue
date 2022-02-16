@@ -1,7 +1,9 @@
 
+
 from multiprocessing import Process
 
 from threading import Thread
+
 
 from pygame import *
 import pygame as pg
@@ -20,9 +22,10 @@ import json
 from settingsfile import *
 dir = "data/"
 FPS = 60
-TOP = "top"
-MIDDLE = "middle"
-BOTTOM = "bottom"
+TOP = "TOP"
+OBSTACLE = "MIDDLE"
+BACKGROUND = "BOTTOM"
+PLAYERLAYER = "PLAYER"
 INTERACTIVERANGE = 60
 
 
@@ -35,18 +38,22 @@ def delete(obj):
 
 
 
+
+
 class GameObject:
-    def __init__(self, img_path, width, height, xpos, ypos, interactive:bool = False):
+    def __init__(self, img_path, width, height, xpos, ypos, interactive:bool = False, active:bool = True):
+        self.type = "default"
         self.id = uuid4()
         self.img_path = img_path
         self.width = width
         self.height = height    
-        self.img = transform.scale(image.load(img_path), (self.width, self.height))
+        self.img = transform.scale(image.load(img_path), (self.width, self.height)).convert_alpha()
         self.xpos = xpos
         self.ypos = ypos
         self.interactive = interactive
         self.group = None
         self.alive = True
+        self.active = active
         
         self.update_vals()
 
@@ -85,6 +92,9 @@ class GameObject:
         self.group - self
         delete(self)
 
+    def update_text(self,text):
+        return
+
     def interact(self, gameobject, game):
         return
 
@@ -92,10 +102,13 @@ class GameObject:
         self.alive = False
         self.destroy()
 
+    def to_dict(self):
+        return {"type":self.type,"img":self.img_path, "alive":self.alive,"width":self.width,"height":self.height, "xpos":self.xpos,"ypos":self.ypos,"interactive":self.interactive}
 
 class Destructible(GameObject):
     def __init__(self, img_path, width, height, xpos, ypos, interactive: bool = True):
         super().__init__(img_path, width, height, xpos, ypos, interactive)
+        self.type = "destructible"
 
     def interact(self, gameobject, game):
         self.destroy()
@@ -104,6 +117,7 @@ class Destructible(GameObject):
 class Killable(GameObject):
     def __init__(self, img_path, width, height, xpos, ypos, interactive: bool = True):
         super().__init__(img_path, width, height, xpos, ypos, interactive)
+        self.type = "killable"
 
     def interact(self,gameobject, game):
         gameobject.kill()
@@ -112,6 +126,7 @@ class Killable(GameObject):
 class Goldore(GameObject):
     def __init__(self, img_path, width, height, xpos, ypos, interactive: bool = True):
         super().__init__(img_path, width, height, xpos, ypos, interactive)
+        self.type = "goldore"
 
     def interact(self, gameobject, game):
         self.destroy()
@@ -122,22 +137,26 @@ class Goldore(GameObject):
 class Silberore(GameObject):
     def __init__(self, img_path, width, height, xpos, ypos, interactive: bool = True):
         super().__init__(img_path, width, height, xpos, ypos, interactive)
+        self.type = "silberore"
 
     def interact(self, gameobject, game):
         self.destroy()
         game: Game
         game.silber + 10
-        
 
         
 
 class Player(GameObject):
     def __init__(self, img_path, width, height, xpos, ypos):
         super().__init__(img_path, width, height, xpos, ypos)
+        self.type = "player"
         self.flipped = FLIPPEDLEFT
         self.alive = True
     
     def in_heigh_focus(self,move_tuple:tuple):
+        treshhold = 0.8
+        top_treshhold = 1 - treshhold
+        bot_treshold = treshhold
         LOCALDEBUG = False
         def ld(txt):
             if LOCALDEBUG:
@@ -146,19 +165,19 @@ class Player(GameObject):
         x_move, y_move = move_tuple
         x_contra = y_contra = 0
         rt = []
-        if self.xpos + x_move < WIDTH*0.1:
+        if self.xpos + x_move < WIDTH*top_treshhold:
             ld(f"object out of focus: left")
             x_contra = MOVESPEED
             x_move = 0 
-        elif self.xpos + self.width +x_move > WIDTH*0.9: 
+        elif self.xpos + self.width +x_move > WIDTH* bot_treshold:
             x_contra = -MOVESPEED
             x_move = 0
             ld(f"object out of focus: right")
-        if self.ypos + y_move < HEIGHT*0.1:
+        if self.ypos + y_move < HEIGHT*top_treshhold:
             y_contra = MOVESPEED
             y_move = 0
             ld(f"object out of focus: top")
-        elif self.ypos + self.height+ y_move > HEIGHT*0.9:
+        elif self.ypos + self.height+ y_move > HEIGHT*bot_treshold:
             y_contra = -MOVESPEED
             y_move = 0
             ld(f"object out of focus: bottom")
@@ -181,10 +200,12 @@ class Player(GameObject):
    
     
 class ObjectGroup:
-    def __init__(self, surface : Surface, active:bool = True) -> None:
+    def __init__(self, surface : Surface, active:bool = True, layer = None) -> None:
         self.list: list[Union[GameObject,Player]] = []
         self.surface = surface
         self.active = active
+        self.layer = layer
+        self.id = uuid4()
 
     def add(self, gameobject : GameObject):
         self.list.append(gameobject)
@@ -192,7 +213,8 @@ class ObjectGroup:
     def draw(self):
         if self.active:
             for obj in self.currently_on_screen():
-                self.surface.blit(obj.img, (obj.xpos, obj.ypos))
+                if obj.active:
+                    self.surface.blit(obj.img, (obj.xpos, obj.ypos))
 
     def get_list(self):
         return self.list
@@ -209,6 +231,9 @@ class ObjectGroup:
     def move(self, move_tuple:tuple):
         for obj in self.list:
             obj.move(move_tuple)
+
+    def __iter__(self):
+        return self.list.__iter__()
 
 
     def currently_on_screen(self) -> list:
@@ -318,8 +343,40 @@ class ObjectGroup:
             self.active = True
 
 
+    def to_dict(self):
+        dc = {
+            "Layer":self.layer,
+            "ObjectGroup":{
+                "active":self.active,
+                "Elements":[
+                ]
+            }
+        }
+        [dc["ObjectGroup"]["Elements"].append(obj.to_dict()) for obj in self.list]
+        return dc
+
+
+
+class Button(GameObject):
+    def __init__(self, img_path, width, height, xpos, ypos, func,interactive: bool = False, active: bool = True):
+        super().__init__(img_path, width, height, xpos, ypos, interactive, active)
+        self.func = func
+        
+
+    def click(self,cords:tuple[float,float]):
+        xcord,ycord = cords
+        x1 = (self.xpos < xcord < self.x_right)
+        y2 = (self.ypos < ycord < self.y_bottom)
+
+        if x1 and y2:
+            self.func()
+
     
 
+    def to_dict(self):
+        pass
+
+        
 
 
 
@@ -350,7 +407,7 @@ class ToggleGroup(ObjectGroup):
 
 
 class TextBox(GameObject):
-    def __init__(self, text, color, fontsize, width, height, xpos, ypos, fontstyle: str = "Calibri"): 
+    def __init__(self, text, color, fontsize, width, height, xpos, ypos, fontstyle: str = "Calibri", active = True): 
         self.text = text
         self.color = color
         self.fontsize = fontsize
@@ -359,9 +416,11 @@ class TextBox(GameObject):
         self.xpos = xpos
         self.ypos = ypos
         self.fontstyle = fontstyle
+        self.type = "textbox"
+        self.active = active
         self.update_vals()
         self.font = font.SysFont(self.fontstyle, self.fontsize, True, False)
-        self.img = self.font.render(self.text, True, self.color)
+        self.img = self.font.render(self.text, True, self.color).convert_alpha()
 
 
     def update_text(self,text):
@@ -372,7 +431,10 @@ class TextBox(GameObject):
     def rerender(self):
         self.img = self.font.render(self.text, True, self.color)  
 
+    def to_dict(self):
+        return {"type":self.type,"text":self.text, "color":self.color,"fontsize":self.fontsize,"fontstyle":self.fontstyle,"width":self.width,"height":self.height, "xpos":self.xpos,"ypos":self.ypos, "active":self.active}
 
+        
 
 class ServerClient:
 
@@ -455,7 +517,7 @@ class ServerClient:
 
 
 class Item:
-    def __init__(self,name, color,amount) -> None:
+    def __init__(self,name, color,amount=0) -> None:
         self.name:str = name   
         self.amount:int = amount
         self.color = color
@@ -476,7 +538,7 @@ class Item:
         return self
 
     def __sub__(self, amount:int):
-        self.amount += amount
+        self.amount -= amount
         return self
 
 class Gold(Item):
@@ -491,103 +553,119 @@ class Silber(Item):
         name = "Silber "
         color = SILBER
         super().__init__(name, color, amount)
+
+class Sword(Item):
+    def __init__(self, amount) -> None:
+        name = "Sword "
+        color = BLACK
+        super().__init__(name, color, amount)
         
         
 class ItemBox(TextBox):
-    def __init__(self, item:Item, fontsize, width, height, xpos, ypos, fontstyle: str = "Calibri"):
-        super().__init__(item.get_text(), item.color, fontsize, width, height, xpos, ypos, fontstyle)
+    def __init__(self, item:Item, fontsize, width, height, xpos, ypos, fontstyle: str = "Calibri",active = True):
+        super().__init__(item.get_text(), item.color, fontsize, width, height, xpos, ypos, fontstyle, active)
         self.item = item
+        self.type = "itembox"
+
         
-    def update_text(self):
+    def update_text(self, _):
         return super().update_text(self.item.get_text())
 
+    def to_dict(self):
+        return {"type":self.type,"item":self.item.name.lower().strip(), "color":self.color,"fontsize":self.fontsize,"fontstyle":self.fontstyle,"width":self.width,"height":self.height, "xpos":self.xpos,"ypos":self.ypos, "active":self.active}
+
+
+
+
+class Objectloader:
+    def __init__(self) -> None:
+        pass
+
+    def load_objdict_from_json(self, file):
+        file = open(file, "r")
+        data = json.load(file)
+        file.close()
+        return data
+      
+  
+
+class Chunk:
+    def __init__(self) -> None:
+        self.loaded = []
+    
 
 
 
 
 class Game:
     def __init__(self) -> None:
+        
+        self.gold = Gold(0)
+        self.silber = Silber(0)
+        self.sword = Sword(0)
 
-        self.objdict = {BOTTOM:[], MIDDLE:[], TOP:[]}
-        self.objdict_keys = [BOTTOM,MIDDLE,TOP]
-           
+        self.objdict = {BACKGROUND:[], OBSTACLE:[],PLAYERLAYER:[] ,TOP:[]}
+        self.objdict_keys = [BACKGROUND,OBSTACLE,PLAYERLAYER,TOP]
+        self.obj_classes :dict[str, GameObject]= {"default":GameObject,"destructible":Destructible, "killable":Killable,"goldore":Goldore,"silberore":Silberore}
+        self.txtobj_classes : dict[str,TextBox|ItemBox] = {"textbox":TextBox, "itembox":ItemBox}
+        self.item_dict : dict[str,Item] = {"gold":self.gold ,"silber":self.silber, "sword":self.sword}
+        
         
         pg.init()
         self.WIN = display.set_mode((WIDTH, HEIGHT))
-
         pg.display.set_caption("yeye")
 
-        self.bg = ObjectGroup(self.WIN)
-        red = GameObject(dir+"red.png", 1000,1000,0,0)
-        self.bg + red
-        self.objdict[BOTTOM].append(self.bg)
-
-        self.player = ObjectGroup(self.WIN)
-        self.player1 = Player(dir+"player1.png", 100,86,500,200)
-        self.player + self.player1
-        self.objdict[TOP].append(self.player)
-        
-        self.obstacles = ObjectGroup(self.WIN)
-        obst1 = GameObject(dir+"img1.png", 200,200,400,400, True)
-        obst2 = GameObject(dir+"blue.png", 100,200,500,600)
-        dest1 = Destructible(dir+"green.png", 1000,80,20,20,True)
-        kill1 = Killable(dir+"green.png", 1000,1000, -2000,0, True)
-        gold1 = Goldore(dir+"blue.png", 200,200,1000,200, True)
-        silber1 = Silberore(dir + "green.png", 200,200,1000,600, True)
-        self.obstacles + obst1
-        self.obstacles + obst2
-        self.obstacles + dest1
-        self.obstacles + kill1
-        self.obstacles + gold1
-        self.obstacles + silber1
-        self.objdict[MIDDLE].append(self.obstacles)
-
-        hforhelp = TextBox("Press 'H' for help", WHITE, 30,100,100,475,20)
-        self.hud = ObjectGroup(self.WIN, True)
-        self.hud + hforhelp
-        self.objdict[TOP].append(self.hud)
-
-        self.stbg = GameObject(dir+"black 95.png", WIDTH,HEIGHT, 0,0)
-        stmenutxt = TextBox("Menu", WHITE, 60, 100, 100, 550,20)
-        wmovement = TextBox("W <==> UP", GREEN, 40, 100, 100, 200,100)
-        smovement = TextBox("S <==> DOWN", GREEN, 40, 100, 100, 200,200)
-        amovement = TextBox("A <==> LEFT", GREEN, 40, 100, 100, 200,300)
-        dmovement = TextBox("D <==> RIGHT", GREEN, 40, 100, 100, 200,400)
-        interacthelp = TextBox("E <==> INTERACT", GREEN, 40, 100, 100, 200,500)
-        
-
-        self.stmenu = ObjectGroup(self.WIN, False)
-        self.stmenu + self.stbg
-        self.stmenu + stmenutxt
-        self.stmenu + wmovement 
-        self.stmenu + smovement 
-        self.stmenu + amovement 
-        self.stmenu + dmovement
-        self.stmenu + interacthelp
-
-        self.objdict[TOP].append(self.stmenu)
-
-        self.gold = Gold(0)
-        self.silber = Silber(0)
-
-        self.inventorygroup = ObjectGroup(self.WIN, False)
-        self.inventorybg = GameObject(dir+"gray 80.png", WIDTH/2,HEIGHT/2, WIDTH/4,HEIGHT/4)
-        self.inventorygold = ItemBox(self.gold, 40, 50,50,self.inventorybg.xpos+20,self.inventorybg.ypos+40)
-        self.inventorysilber = ItemBox(self.silber, 40, 50,50,self.inventorybg.xpos+20,self.inventorybg.ypos+100)
-        self.inventorygroup + self.inventorybg
-        self.inventorygroup + self.inventorygold
-        self.inventorygroup + self.inventorysilber
-
-        self.objdict[TOP].append(self.inventorygroup)
-
-        
-        
-       
         self.clock = pg.time.Clock()
         self.movementkeys = {"w":[False,(0,-MOVESPEED)], "a":[False,(-MOVESPEED,0)], "d": [False,(MOVESPEED,0)], "s":[False, (0,MOVESPEED)]}
-        self.overlaykeys: dict[str:function] = {"h":[False,False, self.togglehud], "e":[False, False, self.interact], "i":[False,False, self.toggleinventory]}
+        self.overlaykeys: dict[str:function] = {"h":[False,False, self.togglehud], "e":[False, False, self.interact], "i":[False,False, self.toggleinventory], "f":[False,False, self.craft]}
+
+
+
+        #loading player  from file
+        playerdata = Objectloader().load_objdict_from_json(PLAYER)
+        playerobjectgroup = playerdata["ObjectGroup"]
+        playerelements = playerobjectgroup["Elements"]
+        self.player = ObjectGroup(self.WIN, playerobjectgroup["active"], layer=playerdata["Layer"])
+        pl = playerelements[0]
+        self.player1 = Player(pl["img"], pl["width"],pl["height"],pl["xpos"], pl["ypos"])
+        self.player + self.player1 
+        self.objdict[self.player.layer].append(self.player)
+
+        # loading a Background from file
+        def load_object(file):
+            obj_data :dict= Objectloader().load_objdict_from_json(file)
+            obj_group = ObjectGroup(self.WIN,obj_data["ObjectGroup"]["active"], layer=obj_data["Layer"])
+            for element in obj_data["ObjectGroup"]["Elements"]:
+                element: dict
+                if element["type"] in self.obj_classes.keys():
+                    obj_element = self.obj_classes[element["type"]](element["img"], element["width"], element["height"], element["xpos"], element["ypos"], element["interactive"])
+                elif element["type"] == "textbox":
+                    obj_element = TextBox(element["text"], element["color"], element["fontsize"], element["width"],element["height"], element["xpos"], element["ypos"], element["fontstyle"])
+                elif element["type"] == "itembox":
+                    obj_element = ItemBox(self.item_dict[element["item"]], element["fontsize"], element["width"],element["height"], element["xpos"], element["ypos"], element["fontstyle"])
+                obj_group + obj_element
+            self.objdict[obj_group.layer].append(obj_group)
+            return obj_group
+
+        self.hud = load_object(HUD)
+
+        self.stmenu = load_object(SETTINGSMENU)
+
+        self.deathscreengroup = load_object(GAMEOVER)
+        
+        self.inventorygroup = load_object(INVENTORY)
+
+        self.obstacles = load_object(OBSTACLEJSON)
 
         self.mainloop()
+
+    def craft(self):
+        if self.gold.amount >= 30:
+            self.sword + 1
+            self.gold - 30
+          
+
+
 
     def toggleinventory(self):
         if not self.inventorygroup.is_active():
@@ -610,6 +688,12 @@ class Game:
         self.stmenu.activate()
         self.hud.deactivate()
 
+    def activate_death(self):
+        self.deathscreengroup.activate()
+
+    def deactivate_death(self):
+        self.deathscreengroup.deactivate()
+
     def togglehud(self):
         if not self.stmenu.is_active():
             self.activatehelp()
@@ -617,17 +701,15 @@ class Game:
         else:
             self.deactivatehelp()
 
+    def show_deathscreen(self):
+        self.deathscreengroup.activate()
 
-    def interact(self):
+    def interact(self):   
         rt:GameObject|None = self.obstacles.interactive_in_range(self.player1)
         if rt is None:
             return
-        print("interaction")
         rt.interact(self.player1, self)
         
-        
-
-
 
     def mainloop(self):
 
@@ -637,9 +719,11 @@ class Game:
                 if event.type == pg.KEYDOWN:
                     try:
                         self.movementkeys[event.unicode.lower()][0] = True
+                        continue
                     except:
                         try:
-                            self.overlaykeys[event.unicode.lower()][0]= True             
+                            self.overlaykeys[event.unicode.lower()][0]= True
+                            continue             
                         except:
                             pass
                 elif event.type == pg.KEYUP:
@@ -662,7 +746,10 @@ class Game:
                     x,y = item[1]
                     self.x_move += x
                     self.y_move += y 
-
+            if abs(self.x_move) == abs(self.y_move) == MOVESPEED:
+                self.x_move = self.normalized * (self.x_move/abs(self.x_move))
+                self.y_move =  self.normalized * (self.y_move/abs(self.y_move))
+           
             for  item in self.overlaykeys.values():
                 if item[0] and not item[1]:
                     item[2]()
@@ -671,13 +758,14 @@ class Game:
                     item[1] = False
             
             movement()
-        
+
 
         def movement():
-            collision = self.obstacles.collision_precheck(self.player1, (self.x_move,self.y_move))  
+            collision = self.obstacles.collision_precheck(self.player1,(self.x_move,self.y_move))
+            #collision = self.objdict[OBSTACLE].collision_precheck(self.player1, (self.x_move,self.y_move))  
             focus = self.player1.in_heigh_focus((collision))
             self.player1.move(focus[0])
-            self.bg.move(focus[1])
+            #self.backgroud.move(focus[1])
             self.obstacles.move(focus[1])
 
 
@@ -687,31 +775,30 @@ class Game:
                     obj.draw()
 
         def update_items():
-            self.inventorygold.update_text()
-            self.inventorysilber.update_text()
+            [obj.update_text("") for obj in self.inventorygroup]
             
 
 
-        while True:
-            
+        while True: 
             self.clock.tick(FPS)
             
             get_key_input()
 
-            if self.player1.alive:
-                handle_input()
+            if not self.player1.alive:
+                self.show_deathscreen()
+
+            handle_input()
 
             update_items()
             
             self.WIN.fill("black")
 
             drawing()
-            
+           
             display.update()
         
 
 def main():
-
 
     Game()
 

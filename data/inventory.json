@@ -1,0 +1,56 @@
+{
+    "Layer": "TOP",
+    "ObjectGroup": {
+        "active": false,
+        "Elements": [
+            {
+                "type": "itembox",
+                "item": "gold",
+                "color": [
+                    218,
+                    165,
+                    32
+                ],
+                "fontsize": 40,
+                "fontstyle": "Calibri",
+                "width": 50,
+                "height": 50,
+                "xpos": 220.0,
+                "ypos": 190.0,
+                "active": true
+            },
+            {
+                "type": "itembox",
+                "item": "silber",
+                "color": [
+                    192,
+                    192,
+                    192
+                ],
+                "fontsize": 40,
+                "fontstyle": "Calibri",
+                "width": 50,
+                "height": 50,
+                "xpos": 220.0,
+                "ypos": 220.0,
+                "active": true
+            },
+            {
+                "type": "itembox",
+                "item": "sword",
+                "color": [
+                    0,
+                    0,
+                    0
+                ],
+                "fontsize": 40,
+                "fontstyle": "Calibri",
+                "width": 50,
+                "height": 50,
+                "xpos": 220.0,
+                "ypos": 250,
+                "active": false
+            }
+        ]
+    }
+}

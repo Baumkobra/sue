@@ -1,0 +1,43 @@
+{
+     "Layer": "TOP",
+     "ObjectGroup": {
+          "active": false,
+          "Elements": [
+               {
+                    "type": "default",
+                    "img": "data/black 75.png",
+                    "alive": true,
+                    "width": 800,
+                    "height": 600,
+                    "xpos": 0,
+                    "ypos": 0,
+                    "interactive": false
+               },
+               {
+                    "type": "default",
+                    "img": "data/white.png",
+                    "alive": true,
+                    "width": 800,
+                    "height": 100.0,
+                    "xpos": 0,
+                    "ypos": 260.0,
+                    "interactive": false
+               },
+               {
+                    "type": "textbox",
+                    "text": "GAME OVER",
+                    "color": [
+                         255,
+                         0,
+                         0
+                    ],
+                    "fontsize": 100,
+                    "fontstyle": "Calibri",
+                    "width": 200,
+                    "height": 200,
+                    "xpos": 266.6666666666667,
+                    "ypos": 250.0
+               }
+          ]
+     }
+}
